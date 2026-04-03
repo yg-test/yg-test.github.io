@@ -15,6 +15,12 @@
       --primary-soft: #f0fdfa;
       --accent: #f59e0b;
       
+      /* Partner Brand Colors */
+      --cgn-blue: #005BAC;
+      --sysu-green: #005B45;
+      --hkpc-red: #E60012;
+      --xjtu-red: #9B1B30;
+      
       --bg: #fafbfc;
       --card-bg: #ffffff;
       --text-primary: #0f172a;
@@ -57,7 +63,7 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -215,28 +221,39 @@
       object-fit: cover;
     }
 
+    /* Partners Bar with Logos */
     .partners-float {
       position: absolute;
-      bottom: -20px;
+      bottom: -30px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 12px;
-      padding: 12px 20px;
+      gap: 16px;
+      padding: 16px 24px;
       background: white;
-      border-radius: 12px;
+      border-radius: 16px;
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
+      align-items: center;
     }
 
-    .partner-mini {
-      padding: 6px 12px;
-      background: var(--primary-soft);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--primary);
-      white-space: nowrap;
+    .partner-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .partner-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .partner-logo svg {
+      height: 32px;
+      width: auto;
     }
 
     /* ========== Section Base ========== */
@@ -618,34 +635,51 @@
       flex-shrink: 0;
     }
 
-    /* ========== Footer ========== */
+    /* ========== Footer Partners ========== */
     .footer {
       border-top: 1px solid var(--border);
-      padding: 40px 24px;
-      text-align: center;
+      padding: 60px 24px 40px;
     }
 
     .footer-inner {
       max-width: 1280px;
       margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
     }
 
     .footer-partners {
       display: flex;
       justify-content: center;
-      gap: 32px;
-      margin-bottom: 24px;
+      align-items: center;
+      gap: 48px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
     .footer-partner {
-      padding: 8px 16px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      transition: opacity 0.2s;
+    }
+
+    .footer-partner:hover {
+      opacity: 0.8;
+    }
+
+    .footer-partner svg {
+      height: 40px;
+      width: auto;
     }
 
     .footer p {
@@ -658,6 +692,15 @@
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero h1 { font-size: 2.25rem; }
       .hero-visual { order: -1; }
+      .partners-float { 
+        position: relative; 
+        bottom: auto; 
+        left: auto; 
+        transform: none; 
+        margin-top: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
       .overview-cards { grid-template-columns: 1fr; }
       .pipeline { grid-template-columns: 1fr; }
       .pipeline-step:not(:last-child)::after {
@@ -678,12 +721,12 @@
       .hero { padding: 100px 20px 60px; }
       .hero h1 { font-size: 1.875rem; }
       .hero-stats { flex-direction: column; gap: 20px; }
-      .partners-float { flex-wrap: wrap; justify-content: center; }
       .section { padding: 60px 20px; }
       .section-title { font-size: 1.75rem; }
       .demo-grid { grid-template-columns: 1fr; }
       .my-role { flex-direction: column; }
       .award-card { flex-direction: column; }
+      .footer-partners { gap: 24px; }
     }
   </style>
 </head>
@@ -738,11 +781,53 @@
         <div class="hero-image">
           <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a782?w=800&h=600&fit=crop" alt="轮足机器人核电站巡检">
         </div>
+        
+        <!-- Partners Floating Bar with Real Logos -->
         <div class="partners-float">
-          <span class="partner-mini">中广核集团</span>
-          <span class="partner-mini">中山大学</span>
-          <span class="partner-mini">香港生产力局</span>
-          <span class="partner-mini">西安交大</span>
+          <!-- CGN Logo -->
+          <div class="partner-logo" title="中广核集团">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- CGN Blue Circle with stylized bird -->
+              <circle cx="30" cy="30" r="25" fill="#005BAC"/>
+              <path d="M30 12c-8 0-15 5-17 12 3-2 7-3 11-2 4 1 7 4 9 8 2-3 5-5 9-5 3 0 6 1 8 3-3-9-11-16-20-16z" fill="white"/>
+              <text x="65" y="38" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#005BAC">CGN</text>
+            </svg>
+          </div>
+          
+          <!-- SYSU Logo -->
+          <div class="partner-logo" title="中山大学">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- SYSU Green Circle -->
+              <circle cx="30" cy="30" r="25" fill="#005B45"/>
+              <!-- Tower silhouette -->
+              <path d="M30 10l-8 15h16l-8-15z" fill="white"/>
+              <rect x="25" y="25" width="10" height="15" fill="white"/>
+              <text x="65" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#005B45">SYSU</text>
+            </svg>
+          </div>
+          
+          <!-- HKPC Logo -->
+          <div class="partner-logo" title="香港生产力局">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- HKPC Red Square with HK -->
+              <rect x="5" y="5" width="50" height="50" rx="8" fill="#E60012"/>
+              <text x="30" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">HK</text>
+              <text x="70" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#E60012">HKPC</text>
+            </svg>
+          </div>
+          
+          <!-- XJTU Logo -->
+          <div class="partner-logo" title="西安交通大学">
+            <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- XJTU Red Circle with gear -->
+              <circle cx="30" cy="30" r="25" fill="#9B1B30"/>
+              <circle cx="30" cy="30" r="18" fill="none" stroke="white" stroke-width="2"/>
+              <circle cx="30" cy="30" r="8" fill="white"/>
+              <!-- Gear teeth representation -->
+              <path d="M30 5v8M30 47v8M5 30h8M47 30h8" stroke="white" stroke-width="2"/>
+              <text x="65" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#9B1B30">XJTU</text>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -947,14 +1032,49 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer with Partner Logos -->
   <footer class="footer">
     <div class="footer-inner">
+      <div class="footer-title">合作单位</div>
       <div class="footer-partners">
-        <span class="footer-partner">中广核集团</span>
-        <span class="footer-partner">中山大学</span>
-        <span class="footer-partner">香港生产力局</span>
-        <span class="footer-partner">西安交通大学</span>
+        <!-- CGN Footer Logo -->
+        <div class="footer-partner" title="中国广核集团">
+          <svg viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#005BAC"/>
+            <path d="M30 12c-8 0-15 5-17 12 3-2 7-3 11-2 4 1 7 4 9 8 2-3 5-5 9-5 3 0 6 1 8 3-3-9-11-16-20-16z" fill="white"/>
+            <text x="65" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#005BAC">中广核 CGN</text>
+          </svg>
+        </div>
+        
+        <!-- SYSU Footer Logo -->
+        <div class="footer-partner" title="中山大学">
+          <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#005B45"/>
+            <path d="M30 10l-8 15h16l-8-15z" fill="white"/>
+            <rect x="25" y="25" width="10" height="15" fill="white"/>
+            <text x="65" y="38" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#005B45">中山大学 SYSU</text>
+          </svg>
+        </div>
+        
+        <!-- HKPC Footer Logo -->
+        <div class="footer-partner" title="香港生产力促进局">
+          <svg viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="50" height="50" rx="8" fill="#E60012"/>
+            <text x="30" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">HK</text>
+            <text x="70" y="38" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#E60012">香港生产力局 HKPC</text>
+          </svg>
+        </div>
+        
+        <!-- XJTU Footer Logo -->
+        <div class="footer-partner" title="西安交通大学">
+          <svg viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="25" fill="#9B1B30"/>
+            <circle cx="30" cy="30" r="18" fill="none" stroke="white" stroke-width="2"/>
+            <circle cx="30" cy="30" r="8" fill="white"/>
+            <path d="M30 5v8M30 47v8M5 30h8M47 30h8" stroke="white" stroke-width="2"/>
+            <text x="65" y="38" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#9B1B30">西安交通大学 XJTU</text>
+          </svg>
+        </div>
       </div>
       <p>粤港科技创新联合资助项目 · 轮足机器人核电站自主巡检</p>
     </div>
